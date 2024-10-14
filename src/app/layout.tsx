@@ -16,7 +16,10 @@ const roboto = RobotoM({
 })
 
 export const metadata: Metadata = {
-  title: 'Devstore',
+  title: {
+    template: '%s | devstore',
+    default: 'devstore',
+  },
 }
 
 type RootLayoutProps = {

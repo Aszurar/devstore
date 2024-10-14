@@ -1,9 +1,10 @@
+import { Metadata } from 'next'
+
 import { ProductCard } from '@/components/ProductCard'
 import { IProduct } from '@/data/products'
 import { api } from '@/server/api'
 
-export async function getFeaturedProducts() {
-  await new Promise((resolve) => setTimeout(resolve, 3000))
+async function getFeaturedProducts() {
   const response = await api({
     path: '/products/featured',
     init: {
@@ -18,13 +19,18 @@ export async function getFeaturedProducts() {
   return products as IProduct[]
 }
 
+export const metadata: Metadata = {
+  title: 'Home',
+  description: 'Bem vindo a devstore',
+}
+
 export default async function Home() {
   const [highlightedProduct, ...othersProducts] = await getFeaturedProducts()
 
   return (
     <main className="grid grid-cols-9 grid-rows-6 gap-6 max-h-215">
       <ProductCard
-        href=""
+        href={`/product/${highlightedProduct.slug}`}
         image={highlightedProduct.image}
         price={highlightedProduct.price}
         title={highlightedProduct.title}
@@ -34,7 +40,7 @@ export default async function Home() {
       {othersProducts.map((product) => (
         <ProductCard
           key={product.id}
-          href=""
+          href={`/product/${product.slug}`}
           image={product.image}
           price={product.price}
           title={product.title}
