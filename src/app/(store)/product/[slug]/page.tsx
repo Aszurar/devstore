@@ -25,8 +25,6 @@ export async function generateMetadata({
 }
 
 async function getProductBySlug(slug: string): Promise<IProduct> {
-  await new Promise((resolve) => setTimeout(resolve, 5000))
-
   const response = await api({
     path: `/products/${slug}`,
     init: {

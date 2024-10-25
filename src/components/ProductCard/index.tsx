@@ -23,6 +23,11 @@ const productCardVariants = tv({
         imageSize: '445',
         tagPosition: 'sm',
       },
+      search: {
+        container: '',
+        imageSize: '445',
+        tagPosition: 'sm',
+      },
     },
   },
   defaultVariants: {
