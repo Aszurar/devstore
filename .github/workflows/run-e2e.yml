@@ -1,0 +1,33 @@
+name: Cypress Tests
+
+on: push 
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-22.04  
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v4
+        
+      - name: Install Nodejs
+			  uses: actions/setup-node@v4
+			  with:
+			    node-version: 20
+			    
+		  - name: Install PNPM
+			- uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      
+      - name: Install dependencies
+        run: pnpm install
+			
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        env:
+	        APP_URL: "http://localhost:3000" # Endereço em que o projeto web vai rodar aqui no ambiente do githu actions
+	        NEXT_PUBLIC_API_BASE_URL: "https://devstore-api-aszurar.vercel.app/" # Endereço da API
+        with:
+          build: npm run build
+          start: npm start
