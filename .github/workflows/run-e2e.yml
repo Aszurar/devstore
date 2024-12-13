@@ -26,7 +26,7 @@
         - name: Cypress run
           uses: cypress-io/github-action@v6
           env:
-            APP_URL: "http://localhost:3000" # Endereço em que o projeto web vai rodar aqui no ambiente do githu actions
+            APP_URL: "http://localhost:3000" # Endereço em que o projeto web vai rodar aqui no ambiente do github actions
             NEXT_PUBLIC_API_BASE_URL: "https://devstore-api-aszurar.vercel.app/" # Endereço da API
           with:
             build: npm run build
