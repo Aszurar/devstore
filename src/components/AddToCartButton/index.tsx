@@ -8,7 +8,7 @@ type AddToCartButtonProps = {
   id: number
 }
 
-export function AddToCartButton({ id }: AddToCartButtonProps) {
+export function AddToCartButton({ id }: Readonly<AddToCartButtonProps>) {
   const { addToCart } = useCart()
 
   function handleAddToCart() {
